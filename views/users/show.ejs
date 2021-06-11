@@ -1,0 +1,43 @@
+<% include ../partials/header %>
+<div class="row">
+	<div class="col-md-4">
+			<div id="userInfo" class="form-group">
+					<h1 style="text-align: center"><%= user.firstName + " " + user.lastName %></h1>
+				<div id="propic" class="thumbnail">
+					<img src="<%= user.avatar %>" alt="user profile image">
+					<div id="email" class="caption-full"><a href="mailto:<%= user.email %>">Email: <%= user.email %></a></div>
+				</div>
+				<div id="bio">
+					<%= user.bio %>
+				</div>
+				  <% if(currentUser && user._id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
+				  <div class="dropdown" >
+					  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" onclick="Dropfunc()" aria-haspopup="true" aria-expanded="false">
+					    <i class="fas fa-cog"></i>
+					  </button>
+					  <div class="dropdown-menu" id="myDropdown" aria-labelledby="dropdownMenuButton">
+					  	<ul>
+					  		<li><a class="dropdown-item btn btn-xs btn-info" href="/users/<%= user._id %>/edit">Edit Profile</a></li>
+					  		<li><a class="dropdown-item btn btn-xs btn-success" href="/users/<%= user._id %>/editpassword">Change Password</a></li>
+					  		<li>
+					  			<form id="delete-form" action="/users/<%= user._id %>?_method=DELETE" method="POST">
+					                 <button class="btn btn-xs btn-danger">Delete Account</button>
+					            </form>
+					        </li>
+					  	</ul>
+					  </div>
+					</div>
+                        <% } %>
+			</div>
+	</div>
+	<div id="camp" class="col-md-8">
+		<h3><%= user.username %>'s campgrounds:</h3>
+		<ul>
+		<% campgrounds.forEach(function(campground) { %>
+			<li><a class="btn btn-info" href="/campgrounds/<%= campground.id %>"><img id="campimg" src="<%= campground.image %>"><%= campground.name %></a></li>
+		<% }); %>
+		</ul>
+	</div>
+</div>
+
+<% include ../partials/footer %>

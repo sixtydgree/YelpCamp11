@@ -1,0 +1,50 @@
+<% include ./partials/header %>
+<p id="note">
+        <span id="reqField">*</span> = Required
+    </p>
+    <div class="row">
+        <h1 style="text-align: center">Sign Up</h1>
+        <div style="width: 30%; margin: 25px auto;">
+            <form action="/register" method="post">
+                <div class="form-group">
+                    <label name="username">Username</label><span id="reqField">*</span>
+                    <input class="form-control" type="text" name="username" placeholder="username" required>
+                </div>
+                <div class="form-group">
+                    <label name="password">Password</label><span id="reqField">*</span>
+                    <input class="form-control" type="password" name="password" placeholder="password" required>
+                </div>
+                <div class="form-group">
+                    <label name="firstName">First Name</label><span id="reqField">*</span>
+                    <input class="form-control" type="text" name="firstName" placeholder="first name" required>
+                </div>
+                <div class="form-group">
+                    <label name="lastName">Last Name</label><span id="reqField">*</span>
+                    <input class="form-control" type="text" name="lastName" placeholder="last name" required>
+                </div>
+                <div class="form-group">
+                    <label name="email">Email</label><span id="reqField">*</span>
+                    <input class="form-control" type="email" name="email" placeholder="email" required>
+                </div>
+                <div class="form-group">
+                    <label name="bio">Bio</label>
+                    <textarea rows="2" cols="25" maxlength="300" id="bioField" onkeyup="countChar(this)" class="form-control" type="text" name="bio" placeholder="Tell us about yourself in 300 characters or less"></textarea>
+                    <div id="charNum"></div>
+                </div>
+                <div class="form-group">
+                    <label name="avatar">Avatar URL</label>
+                    <input class="form-control" type="text" name="avatar" placeholder="avatar url">
+                </div>
+                <div class="form-group">
+                    <label name="adminCode">Admin Code</label>
+                    <input class="form-control" type="text" name="adminCode" placeholder="admin code">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-lg btn-primary btn-block">Sign Up!</button>
+                </div>
+            </form>
+            <a href="/campgrounds">Go Back</a>
+        </div>
+    </div>
+    
+<% include ./partials/footer %>
